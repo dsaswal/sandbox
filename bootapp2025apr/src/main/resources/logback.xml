@@ -1,6 +1,6 @@
 <configuration>
-    <property name="log.dir" value="file:/workspaces/sandbox/bootapp2025apr/logs" />
-    <property scope="system" name="logDir" value="file:/workspaces/sandbox/bootapp2025apr/logs/core" />
+    <property name="log.dir" value="logs" />
+    <property scope="system" name="logDir" value="logs/core" />
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
@@ -37,10 +37,10 @@
     <logger name="com.zaxxer.hikari.pool.HikariPool" level="INFO">
         <appender-ref ref="hikari_file" />
     </logger>        
-    <logger name="dsa.template.core" level="DEBUG">
+    <logger name="self.dsa.core" level="DEBUG">
         <appender-ref ref="app_log_file" />
     </logger>    
-    <root level="debug">
+    <root level="ERROR">
         <appender-ref ref="root_file" />
     </root>
 </configuration>

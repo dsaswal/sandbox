@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import self.dsa.core.common.Enums;
+import self.dsa.core.config.audit.Auditable;
 
 @Entity
 //@Audited
@@ -26,7 +27,7 @@ import self.dsa.core.common.Enums;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Party {
+public class Party extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -45,7 +46,7 @@ public class Party {
 
     @PrePersist
     public void PrePersist() {
-        //this.setStatus(PartyStatus.Active);
+        this.setStatus(Enums.PartyStatus.ACTIVE);
         if(this.getName() == null) {
             this.setName(this.getFirstName() + " " + this.getLastName());
         }
