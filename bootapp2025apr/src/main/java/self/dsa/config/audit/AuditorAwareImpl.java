@@ -1,19 +1,31 @@
 package self.dsa.config.audit;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.AuditorAware;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.util.Optional;
 
 public class AuditorAwareImpl implements AuditorAware<String> {
+    private static final Logger logger = LoggerFactory.getLogger(AuditorAwareImpl.class);
 
-    @Override
     public Optional<String> getCurrentAuditor() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication == null || !authentication.isAuthenticated()) {
-            return Optional.of("system"); // Fallback for unauthenticated actions
+            // Get request attributes
+            ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+            if (attributes == null) {
+                return Optional.of("defaultUserSystem"); // Fallback for non-request contexts (e.g., H2 console)
+            }
+
+            logger.info("Attributes value" + attributes);
+            // Read userId header
+            String userId = attributes.getRequest().getHeader("userId");
+            logger.info("userId value" + userId);
+            if (userId == null || userId.trim().isEmpty()) {
+                return Optional.of("defaultUserSystem"); // Fallback if header is missing
+            }
+
+            return Optional.of(userId);
         }
-        return Optional.of(authentication.getName()); // Returns username
-    }
 }
