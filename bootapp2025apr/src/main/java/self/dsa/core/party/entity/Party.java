@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import self.dsa.core.common.Enums;
+import self.dsa.config.audit.*;
 
 
 @Entity

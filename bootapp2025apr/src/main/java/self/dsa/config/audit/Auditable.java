@@ -1,4 +1,4 @@
-package self.dsa.core.config.audit;
+package self.dsa.config.audit;
 
 import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedBy;
@@ -8,7 +8,6 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
-import java.time.OffsetDateTime;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)

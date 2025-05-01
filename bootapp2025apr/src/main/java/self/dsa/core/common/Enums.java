@@ -1,7 +1,5 @@
 package self.dsa.core.common;
 
-import jakarta.persistence.*;
-
 public class Enums {
     public enum PartyType {
         INDIVIDUAL("Individual"),

@@ -1,4 +1,4 @@
-package self.dsa.core.config.audit;
+package self.dsa.config.audit;
 
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.core.Authentication;

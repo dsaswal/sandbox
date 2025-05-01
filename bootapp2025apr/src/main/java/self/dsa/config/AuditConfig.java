@@ -1,9 +1,9 @@
-package self.dsa.core.config;
+package self.dsa.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
-import self.dsa.core.config.audit.AuditorAwareImpl;
+import self.dsa.config.audit.AuditorAwareImpl;
 
 @Configuration
 public class AuditConfig {
